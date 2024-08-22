@@ -1,46 +1,109 @@
-# Getting Started with Create React App
+---
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Task Management Application - Frontend
+
+This repository contains the frontend of a Task Management Application built with React and TypeScript. The application interacts with a .NET Core backend, providing users the ability to manage tasks and receive real-time updates using SignalR.
+
+## Features
+
+- **Create, Read, Update, Delete Tasks**: Seamlessly manage tasks with a modern UI.
+- **Real-Time Notifications**: Stay updated with real-time notifications for task creation, updates, and deletions using SignalR.
+- **Task Status Indicators**: Visual indicators using Material-UI icons to represent the completion status of tasks.
+- **Responsive Design**: Optimized for various screen sizes, ensuring a smooth user experience across devices.
+
+## Technologies Used
+
+- **React**: A JavaScript library for building user interfaces.
+- **TypeScript**: Typed superset of JavaScript that scales.
+- **Material-UI**: Popular React UI framework for creating responsive, attractive UIs.
+- **SignalR Client**: For handling real-time updates from the backend.
+
+## Getting Started
+
+### Prerequisites
+
+- [Node.js & npm](https://nodejs.org/)
+- [Visual Studio Code](https://code.visualstudio.com/)
+
+### Setup Instructions
+
+1. **Clone the Repository**
+
+    ```bash
+    git clone https://github.com/receperdog/task-management-frontend.git
+    cd task-management-frontend
+    ```
+
+2. **Install Dependencies**
+
+    ```bash
+    npm install
+    ```
+
+3. **Configure SignalR Connection**
+
+    Ensure that the SignalR connection is correctly set up in the `signalRConnection.ts` file. The connection URL should match your backend SignalR Hub URL:
+
+    ```typescript
+    import * as signalR from '@microsoft/signalr';
+
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl('http://localhost:5108/taskhub') // Match this with your backend Hub URL
+        .withAutomaticReconnect()
+        .configureLogging(signalR.LogLevel.Information)
+        .build();
+
+    connection.start().catch(err => console.error('SignalR Connection Error: ', err));
+
+    export default connection;
+    ```
+
+4. **Start the Development Server**
+
+    ```bash
+    npm start
+    ```
+
+    The frontend should now be running on `http://localhost:3000`.
+
+## Project Structure
+
+- **`src/components/`**: Contains all React components, such as `TaskListView`, `TaskFormView`, and `TaskDetailView`.
+- **`src/services/`**: Includes services for interacting with the backend API and managing SignalR connections.
+- **`src/App.tsx`**: The main component that sets up routing and renders different views.
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+- **`npm start`**: Runs the app in development mode.
+- **`npm test`**: Launches the test runner.
+- **`npm run build`**: Builds the app for production.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Clean Up Unnecessary Files
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+To keep your repository clean, ensure the following files are excluded:
 
-### `npm test`
+### `.gitignore`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```plaintext
+node_modules/
+build/
+.env
+.vscode/
+.DS_Store
+```
 
-### `npm run build`
+Ensure you do not commit unnecessary files such as `node_modules/`, `build/`, or IDE-specific settings.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Future Enhancements
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **User Authentication**: Integrate user authentication for personalized task management.
+- **Task Prioritization**: Introduce features to set task priorities.
+- **Enhanced Notifications**: Extend real-time notifications to include additional events or task types.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## License
 
-### `npm run eject`
+This project is licensed under the MIT License.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
