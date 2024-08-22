@@ -30,8 +30,8 @@ This repository contains the frontend of a Task Management Application built wit
 1. **Clone the Repository**
 
     ```bash
-    git clone https://github.com/receperdog/task-management-frontend.git
-    cd task-management-frontend
+    git clone https://github.com/receperdog/sunex-task-frontend.git
+    cd sunex-task-frontend
     ```
 
 2. **Install Dependencies**
