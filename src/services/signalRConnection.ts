@@ -1,7 +1,7 @@
 import * as signalR from '@microsoft/signalr';
 
 const connection = new signalR.HubConnectionBuilder()
-    .withUrl('http://localhost:5108/taskhub') // Ensure this matches your backend Hub URL
+    .withUrl('http://localhost:5108/taskhub')
     .withAutomaticReconnect()
     .configureLogging(signalR.LogLevel.Information)
     .build();
